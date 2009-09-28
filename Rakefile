@@ -8,3 +8,13 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 
 require 'tasks/rails'
+
+namespace :ferret do
+desc "Updates the ferret index for the application."
+  task :recreate => [ :environment ] do
+    puts "Creating index"
+    Expert.rebuild_index
+    Extra.rebuild_index
+    puts "Completed Ferret Index Rebuild"
+  end
+end
