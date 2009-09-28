@@ -55,30 +55,6 @@ namespace :deploy do
 end
 
 
-# http://www.magnionlabs.com/2009/2/28/background-job-processing-in-rails-with-delayed_job
-namespace :delayed_job do
-  desc "Start delayed_job process"
-  task :start, :roles => :app do
-    run "cd #{current_path}; script/delayed_job start production" #{rails_env}"
-  end
-
-  desc "Stop delayed_job process"
-  task :stop, :roles => :app do
-    run "cd #{current_path}; script/delayed_job stop production" #{rails_env}"
-  end
-
-  desc "Restart delayed_job process"
-  task :restart, :roles => :app do
-    run "cd #{current_path}; script/delayed_job restart production" #{rails_env}"
-  end
-end
-
-after "deploy:start", "delayed_job:start"
-after "deploy:stop", "delayed_job:stop"
-after "deploy:restart", "delayed_job:restart"
-
-
-
 namespace :backup do
   desc "Backup the remote production database"
   task :mysql, :roles => :db, :only => { :primary => true } do
