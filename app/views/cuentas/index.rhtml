@@ -1,0 +1,12 @@
+<h1>Gestión de cuentas de usuario</h1>
+
+
+
+<div class="actions">
+	<%= link_to 'Volver a la lista de expertas y expertos', :controller => 'expertos', :action => 'lista' %>
+<% if logged_in? %>
+	<%= link_to 'Registrar a alguien para que pueda editar', :controller => 'cuentas', :action => 'registrar' %>
+<% end %>
+	<div class="spacer"></div>
+</div>
+

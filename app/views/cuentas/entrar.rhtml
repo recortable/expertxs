@@ -1,0 +1,23 @@
+<h1>Identificarse</h1>
+<p>Para poder editar la base de datos tienes que estar registrada/o e identificarte</p>
+
+<div id="personal">
+<% form_tag do -%>
+<p><label for="login">Nombre</label>	
+<%= text_field_tag 'login' %></p>
+
+<p><label for="password">Clave</label>
+<%= password_field_tag 'password' %></p>
+
+<!-- Uncomment this if you want this functionality
+<p><label for="remember_me">Remember me:</label>
+<%= check_box_tag 'remember_me' %></p>
+-->
+
+<p><label>&nbsp;</label><%= submit_tag 'Entrar' %></p>
+<% end -%>
+</div>
+
+<div class="spacer" />
+&nbsp;
+

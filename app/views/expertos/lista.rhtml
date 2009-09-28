@@ -1,0 +1,48 @@
+
+
+
+<h1>Lista de expertas y expertos en la base de datos</h1>
+<% if !@filter.nil? %>
+  <div id="filter">Sólo se están mostrando <%= @filter %>. <br/><br/>
+  <%= link_to 'Pulsa aqui para ver tod@s',      :action => 'lista' %></div>
+<% end %>
+
+
+<% if logged_in? %>
+  <div class="actions">
+    <%= link_to 'Añadir una nueva experta o experto', :action => 'nuevo' %>
+    <div class="spacer"></div>
+  </div>
+<% end %>
+
+<table>
+  <thead><tr>
+      <td>Nombre</td>
+      <td>Situación profesional</td>
+      <td>Universidad</td>
+      <td>Centro de investigación / Lugar de trabajo</td>
+      <td></td>
+  </tr></thead>
+  <tbody>
+
+
+    <% for expert in @experts %>
+      <tr class="<%= cycle("even", "odd") -%>">
+        <td><%= link_to expert.name, :action => 'ver', :id => expert %></td>
+        <td><%= link_to_column expert.etype, :etype %></td>
+        <td><%= link_to_column expert.university, :university  %></td>
+        <td><%= link_to_column expert.center, :center %></td>
+        <td class="commands">
+          <% if logged_in? %>
+            <%= link_to 'Editar', :action => 'editar', :id => expert %>
+            <%= link_to 'Borrar', {:action => 'destroy', :id => expert},
+              :confirm => '¡¡¡CUIDADO!!!: Estás a punto de borrar un expert@. ¿Estás segura?' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="pagination">
+  <% # will_paginate @experts %>
+</div>

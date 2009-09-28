@@ -1,0 +1,5 @@
+<h1>Añadir una experta o experto a la base de datos</h1>
+
+<% form_for :expert, @expert, :url => {:action => 'create'}, :html => {:id => 'editor' } do |form| %>
+<%= render :partial => 'form', :locals => {:f => form, :expert => @expert} %>
+<% end %>

@@ -1,0 +1,23 @@
+
+DATABASE
+
+CREATE DATABASE apyrails_development;
+GRANT ALL PRIVILEGES ON apyrails_development.* TO "apyrails"@"localhost" IDENTIFIED BY "xxxx"
+FLUSH PRIVILEGES;
+
+
+PLUGINS
+
+script/plugin source http://svn.techno-weenie.net/projects/plugins
+script/plugin install acts_as_authenticated
+
+./script/plugin install \ svn://errtheblog.com/svn/plugins/will_paginate
+
+# AUTOMIGRATIONS: http://errtheblog.com/post/12447
+./script/plugin install  svn://errtheblog.com/svn/plugins/auto_migrations
+
+
+# SIMPLE SEARCH
+ ./script/plugin install http://julik.textdriven.com/svn/tools/rails_plugins/simple_search
+
+
