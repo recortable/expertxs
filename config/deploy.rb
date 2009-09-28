@@ -9,16 +9,16 @@ require 'yaml'
 GIT = YAML.load_file("#{File.dirname(__FILE__)}/git.yml")
 
 default_run_options[:pty] = true
-set :application, "cyl"
+set :application, "expertxs"
 set :deploy_to, "/home/deploy/#{application}"
 set :user, "deploy"
 set :use_sudo, false
 
 set :scm, "git"
-set :repository,  "git@github.com:danigb/cyl.git"
+set :repository,  "git@github.com:danigb/expertxs.git"
 set :branch, "master"
 set :deploy_via, :remote_cache
-set :scm_verbose, true
+set :scm_verbose, true # necesario para la version de git de toami
 set :scm_passphrase, GIT['password']
 
 # set :git_shallow_clone, 1 #set :git_enable_submodules, 1
@@ -35,7 +35,7 @@ after "deploy", "deploy:restart"
 namespace :config do
   desc "copy shared configurations to current"
   task :copy_shared_configurations, :roles => [:app] do
-    %w[database.yml cyl.yml].each do |f|
+    %w[database.yml].each do |f|
       run "ln -nsf #{shared_path}/config/#{f} #{release_path}/config/#{f}"
     end
   end
