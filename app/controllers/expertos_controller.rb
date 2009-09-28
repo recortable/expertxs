@@ -2,9 +2,10 @@ class ExpertosController < ApplicationController
 	layout 'apyweb'
 	before_filter :login_required, :only => [ :nuevo, :create, :update, :editar ]
 
+  caches_page :muestra, :lista, :materias
+
 	def index
-		lista
-		render :action => 'lista'
+    redirect_to :action => 'lista'
 	end
 	
 	def muestra
@@ -33,7 +34,7 @@ class ExpertosController < ApplicationController
 	end
 
 	def lista
-#		@experts, @page = Expert.paginate (:all, :page => params[:page], :per_page => 50)
+    #		@experts, @page = Expert.paginate (:all, :page => params[:page], :per_page => 50)
 		@experts = Expert.find :all, :order => 'name ASC'
 	end
 	
@@ -49,15 +50,15 @@ class ExpertosController < ApplicationController
 	end
 
 	def nuevo
-			@expert = Expert.new
-			@expert.author = nil # current_user.login
-			@expert.prepare
-			@materias = Materia.find :all
+    @expert = Expert.new
+    @expert.author = nil # current_user.login
+    @expert.prepare
+    @materias = Materia.find :all
 	end
 
 	def editar 
-			@expert = Expert.find(params[:id])
-			@materias = Materia.find :all
+    @expert = Expert.find(params[:id])
+    @materias = Materia.find :all
 	end
 
 	def update
@@ -89,16 +90,16 @@ class ExpertosController < ApplicationController
 		redirect_to :action => 'lista'
 	end
 
-private
+  private
 	def parse_params(params, expert)
-			expert.materias.clear
-			params[:selected].split('m').each {|i| expert.materias << Materia.find(i) if i.length > 0}
-			add_extra(params, expert)
+    expert.materias.clear
+    params[:selected].split('m').each {|i| expert.materias << Materia.find(i) if i.length > 0}
+    add_extra(params, expert)
 	end
 
 	def add_extra(params, expert)
 		expert.extras.clear
-#		expert.extras.each {|e| e.destroy unless e.new_record? }
+    #		expert.extras.each {|e| e.destroy unless e.new_record? }
 		params[:etype].each_with_index do |item, index| 
 			extra = Extra.new(:etype => params[:etype][index],
 				:value1  => params[:value1][index],

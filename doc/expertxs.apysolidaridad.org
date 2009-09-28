@@ -1,0 +1,16 @@
+<VirtualHost *:80>
+	ServerName expertxs.apysolidaridad.org
+	DocumentRoot /home/deploy/expertxs/current/public
+	RailsBaseURI /
+        RewriteEngine On
+
+        RewriteRule ^/$ /cache/index.html [QSA]
+        RewriteRule ^([^.]+)$ /cache/$1.html [QSA]
+
+	<Directory /home/deploy/expertxs/current/public/>
+		Options FollowSymLinks
+		Allow from all
+		AllowOverride None
+		Order allow,deny
+	</Directory>
+</VirtualHost>

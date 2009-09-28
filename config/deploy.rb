@@ -83,18 +83,20 @@ default_run_options[:shell] = false
 namespace :ferret do
   desc "Start ferret server in production mode"
   task :start do
-    run "#{current_path}/script/ferret_server -e production start"
+    path = File.join(File.dirname(__FILE__), '..')
+    run "#{current_path}/script/ferret_server start -e production --root #{path}"
   end
 
   desc "Stop ferret server in production mode"
   task :stop do
-    run "#{current_path}/script/ferret_server -e production stop"
+        path = File.join(File.dirname(__FILE__), '..')
+    run "#{current_path}/script/ferret_server stop -e production --root #{path}"
   end
 
   desc "Re-start ferret server in production mode"
   task :restart do
-    run "cd #{current_path} && ./script/ferret_server -e production stop"
-    run "cd #{current_path} && ./script/ferret_server -e production start"
+    stop
+    start
   end
 end
 
