@@ -14,7 +14,7 @@
       <div id="areas">
         <div class="area" style="background-color: #24419B;">
           <a href="http://www.apysolidaridad.org/8" style="margin-top: 0; " class="selected">
-          <img alt="Apy" src="/images/logo.gif" /></a>
+            <img alt="Apy" src="/images/logo.gif" /></a>
         </div>
         <% ['#DB3D4C', '#E36C2D', '#D79625', '#D2C940', '#9FA807'].each do |color| -%>
           <div class="area" style="background-color: <%= color -%>;">
@@ -37,14 +37,16 @@
             <li>
               <div class="locked">Base de datos de expertas y expertos</div>
             </li>
-            <ul class="depth-2" >
-              <li>
-                <a href="/" class="depth-3 <%= 'selected' if request.request_uri == '/'  %> ">Tod@s</a>
-              </li>
-              <li>
-                <a href="/materias" class="depth-3 <%= 'selected' if request.request_uri == '/materias'  %>">Materias</a>
-              </li>
-            </ul>
+            <li>
+              <ul class="depth-2" >
+                <li>
+                  <a href="/" class="depth-3 <%= 'selected' if request.request_uri == '/'  %> ">Tod@s</a>
+                </li>
+                <li>
+                  <a href="/materias" class="depth-3 <%= 'selected' if request.request_uri == '/materias'  %>">Materias</a>
+                </li>
+              </ul>
+            </li>
           </ul>
 
         </div>
@@ -54,9 +56,6 @@
           </div>
         </div>
       </div>
-
-      <%= clear -%>
     </div>
-  </body>
   </body>
 </html>
