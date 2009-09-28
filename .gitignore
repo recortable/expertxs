@@ -8,6 +8,7 @@ public/assets/**
 nbproject
 db/data.yml
 backups/*.bz2
+backups/*.sql
 config/git.yml
 
 
