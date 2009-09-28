@@ -102,7 +102,7 @@ tienes que ir a la lista de materias</p>
 		</tr>
 	</thead>
 	<tbody id="research">
-	<% for extra in expert.extras_of(:research) %>
+	<% expert.extras_of(:research).each do |extra| %>
 	<tr>
 			<td><%= text_field_tag 'value1[]', extra.value1 %></td>
 			<td><%= text_field_tag 'value2[]', extra.value2 %></td>
@@ -126,7 +126,7 @@ tienes que ir a la lista de materias</p>
 		</tr>
 	</thead>
 	<tbody id="reference">
-	<% for extra in expert.extras_of(:reference) %>
+	<%  expert.extras_of(:reference).each do |extra| %>
 	<tr>
 			<td><%= text_field_tag 'value1[]', extra.value1 %></td>
 			<td><%= text_field_tag 'value2[]', extra.value2 %></td>
