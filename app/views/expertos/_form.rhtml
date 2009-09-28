@@ -2,7 +2,7 @@
 
 <div class="actions">
 	<%= link_to_function 'Guardar', 'submitForm();' %>
-	<%= link_to 'Cancelar', {:action => 'ver', :id => expert} %>
+	<%= link_to 'Cancelar', root_path %>
 </div>
 
 <%= error_messages_for 'expert' %>
@@ -144,6 +144,6 @@ tienes que ir a la lista de materias</p>
 
 <div class="actions">
 	<%= link_to_function 'Guardar', 'submitForm()' %>
-	<%= link_to 'Cancelar', {:action => 'lista'}, {:confirm => 'no se guardaran los cambios. estas segura?' } %>
+	<%= link_to 'Cancelar', root_path, {:confirm => 'no se guardaran los cambios. estas segura?' } %>
 	<div class="spacer"></div>
 </div>

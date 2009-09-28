@@ -98,6 +98,6 @@ namespace :ferret do
   end
 end
 
-before "deploy:start", "ferret:start"
-before "deploy:stop", "ferret:stop"
-after "deploy:restart", "ferret:restart"
+#before "deploy:start", "ferret:start"
+#before "deploy:stop", "ferret:stop"
+#after "deploy:restart", "ferret:restart"
