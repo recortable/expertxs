@@ -1,5 +1,0 @@
-<h1>Editando '<%= @materia.name %>'</h1>
-
-<% form_for :materia, @materia, :url => {:action => 'update', :id => @materia}, :html => {:id => 'editor' } do |form| %>
-<%= render :partial => 'form', :locals => {:form => form, :materia => @materia} %>
-<% end %>

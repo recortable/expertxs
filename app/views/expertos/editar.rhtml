@@ -1,5 +1,0 @@
-<h1>Editando '<%= @expert.name %>'</h1>
-
-<% form_for :expert, @expert, :url => {:action => 'update', :id => @expert}, :html => {:id => 'editor' } do |form| %>
-<%= render :partial => 'form', :locals => {:f => form, :expert => @expert} %>
-<% end %>
