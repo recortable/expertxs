@@ -9,6 +9,7 @@ nbproject
 db/data.yml
 backups/*.bz2
 backups/*.sql
+index/**
 config/git.yml
 
 

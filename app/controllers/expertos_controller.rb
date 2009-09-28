@@ -22,8 +22,8 @@ class ExpertosController < ApplicationController
 	def search 
 		term = params[:query].to_s
 		if term.length > 0
-			@experts = Expert.find_by_contents(term)
-			extras = Extra.find_by_contents(term)
+			@experts = Expert.find_with_ferret(term)
+			extras = Extra.find_with_ferret(term)
 			extras.each{|extra| @experts << extra.expert}
 			@filter = "los resultados de la búsqueda '#{term}'"
 		else

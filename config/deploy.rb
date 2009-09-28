@@ -78,3 +78,26 @@ task :before_migrate do
   backup
 end
 
+# http://www.zorched.net/2008/06/19/capistrano-and-ferret-drb/
+default_run_options[:shell] = false
+namespace :ferret do
+  desc "Start ferret server in production mode"
+  task :start do
+    run "#{current_path}/script/ferret_server -e production start"
+  end
+
+  desc "Stop ferret server in production mode"
+  task :stop do
+    run "#{current_path}/script/ferret_server -e production stop"
+  end
+
+  desc "Re-start ferret server in production mode"
+  task :restart do
+    run "cd #{current_path} && ./script/ferret_server -e production stop"
+    run "cd #{current_path} && ./script/ferret_server -e production start"
+  end
+end
+
+before "deploy:start", "ferret:start"
+before "deploy:stop", "ferret:stop"
+after "deploy:restart", "ferret:restart"

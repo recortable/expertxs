@@ -1,5 +1,5 @@
 class Expert < ActiveRecord::Base
-	#acts_as_ferret
+	acts_as_ferret
 	has_and_belongs_to_many :materias
 	has_many :extras, :dependent => :destroy
 	
