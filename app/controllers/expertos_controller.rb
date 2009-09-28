@@ -95,8 +95,8 @@ class ExpertosController < ApplicationController
   private
 
   def clear_cache(id = nil)
-    expires_page :action => 'lista'
-    expires_page(:action => 'ver', :id => id) unless id.nil?
+    expire_page :action => 'lista'
+    expire_page(:action => 'ver', :id => id) unless id.nil?
   end
 
 	def parse_params(params, expert)
