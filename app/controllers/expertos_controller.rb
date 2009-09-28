@@ -2,7 +2,7 @@ class ExpertosController < ApplicationController
 	layout 'apyweb'
 	before_filter :login_required, :only => [ :nuevo, :create, :update, :editar ]
 
-  caches_page :muestra, :lista, :materias
+  caches_page :lista, :ver
 
 	def index
     redirect_to :action => 'lista'
@@ -71,6 +71,7 @@ class ExpertosController < ApplicationController
 		else
 			render :action => 'editar'
 		end
+    clear_cache(params[:id])
 	end
 
 	def create
@@ -82,6 +83,7 @@ class ExpertosController < ApplicationController
 		else
 			render :action => 'nuevo'
 		end
+    clear_cache(nil)
 	end
 
 	def destroy
@@ -91,6 +93,12 @@ class ExpertosController < ApplicationController
 	end
 
   private
+
+  def clear_cache(id = nil)
+    expires_page :action => 'lista'
+    expires_page(:action => 'ver', :id => id) unless id.nil?
+  end
+
 	def parse_params(params, expert)
     expert.materias.clear
     params[:selected].split('m').each {|i| expert.materias << Materia.find(i) if i.length > 0}
