@@ -3,7 +3,6 @@
 <div class="actions">
 	<%= link_to_function 'Guardar', 'submitForm();' %>
 	<%= link_to 'Cancelar', {:action => 'ver', :id => expert} %>
-	<div class="spacer"></div>
 </div>
 
 <%= error_messages_for 'expert' %>
@@ -38,7 +37,7 @@ tienes que ir a la lista de materias</p>
 <%= hidden_field_tag 'selected', '', {:id => 'selected' } %>
 </div>
 
-<div class="spacer" /><br/>
+<div class="spacer">&nbsp;</div><br/>
 <div id="extras">
 
 <h2>Formación académica</h2>

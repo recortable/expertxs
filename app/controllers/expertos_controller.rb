@@ -50,7 +50,7 @@ class ExpertosController < ApplicationController
 
 	def nuevo
 			@expert = Expert.new
-			@expert.author = current_user.login 
+			@expert.author = nil # current_user.login
 			@expert.prepare
 			@materias = Materia.find :all
 	end
