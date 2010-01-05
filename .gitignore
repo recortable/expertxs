@@ -12,5 +12,5 @@ backups/*.bz2
 backups/*.sql
 index/**
 config/git.yml
-
+tmp/**
 
