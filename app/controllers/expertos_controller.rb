@@ -1,12 +1,16 @@
 class ExpertosController < ApplicationController
 	layout 'apyweb'
-	before_filter :login_required, :only => [ :nuevo, :create, :update, :editar ]
+	before_filter :login_required, :only => [ :nuevo, :create, :update, :editar, :login ]
 
   caches_page :lista, :ver
 
 	def index
     redirect_to :action => 'lista'
 	end
+
+  def login
+    redirect_to :action => 'lista'
+  end
 	
 	def muestra
 		term = params[:query].to_s
