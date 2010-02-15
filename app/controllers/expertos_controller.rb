@@ -1,6 +1,6 @@
 class ExpertosController < ApplicationController
 	layout 'apyweb'
-	before_filter :login_required, :only => [ :nuevo, :create, :update, :editar, :login ]
+	before_filter :login_required, :only => [ :nuevo, :create, :update, :editar, :login, :destroy ]
 
   caches_page :ver
 
@@ -91,9 +91,10 @@ class ExpertosController < ApplicationController
 	end
 
 	def destroy
-		expert = Expert.find(params[:id])
-		expert.destroy	
-		redirect_to :action => 'lista'
+    render :text => 'Borrar ha sido temporalmente deshabilitado. Reutiliza la ficha con otrx expertx o escribe a danigb@gmail.com para que la borre.'
+		#expert = Expert.find(params[:id])
+		#expert.destroy
+		#redirect_to :action => 'lista'
 	end
 
   private
