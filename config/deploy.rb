@@ -55,9 +55,9 @@ namespace :deploy do
 end
 
 
-namespace :backup do
+namespace :mysql do
   desc "Backup the remote production database"
-  task :mysql, :roles => :db, :only => { :primary => true } do
+  task :backup, :roles => :db, :only => { :primary => true } do
     filename = "#{application}.dump.#{Time.now.to_i}.sql.bz2"
     file = "/tmp/#{filename}"
     on_rollback { delete file }
@@ -75,7 +75,7 @@ end
 
 desc "Backup the database before running migrations"
 task :before_migrate do
-  backup
+  mysql
 end
 
 # http://www.zorched.net/2008/06/19/capistrano-and-ferret-drb/
